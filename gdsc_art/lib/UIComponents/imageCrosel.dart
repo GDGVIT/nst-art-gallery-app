@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:overlapped_carousel/overlapped_carousel.dart';
 
@@ -63,7 +62,8 @@ class _CustomImageSliderState extends State<CustomImageSlider> {
       alignment: Alignment.center,
       children: [
         SizedBox(
-          height: min(screenWidth / 3.3 * (16 / 9), screenHeight * .9),
+          height: screenWidth / 3.3 * (16 / 9),
+          width: screenHeight * 100,
           child: GestureDetector(
             onPanUpdate: (details) {
               setState(() {

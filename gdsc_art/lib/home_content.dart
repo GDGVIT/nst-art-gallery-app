@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gdsc_artwork/Constants/Colors.dart';
 import 'package:gdsc_artwork/UIComponents/imageCrosel.dart';
 
 class HomeContent extends StatelessWidget {
@@ -22,15 +23,64 @@ class HomeContent extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Center(
-        child: CustomImageSlider(
-          width: 250.0,
-          height: 300.0,
-          widgets: imageWidgets,
-          currentIndex: 1,
-          onClicked: (index) {
-            // No action required on click for now
-          },
+      body: Padding(
+        padding: const EdgeInsets.only(top: 40.0), // Increased top padding
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(height: 60.0), // Space above the slider
+            Center(
+              child: CustomImageSlider(
+                width: 320.0, // Increased slider width
+                height: 350.0, // Increased slider height
+                widgets: imageWidgets,
+                currentIndex: 1,
+                onClicked: (index) {},
+              ),
+            ),
+            const SizedBox(height: 40.0), // Increased space below the slider
+            const Text(
+              'GSDC ARTWORK',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 28.0, // Increased font size
+                fontFamily: 'Outfit',
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 20.0), // Increased space below the title
+            const Padding(
+              padding:
+                  EdgeInsets.symmetric(horizontal: 24.0), // Increased padding
+              child: Text(
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+                'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0, // Increased font size
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            const SizedBox(height: 30.0), // Increased space below the text
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: CustomColors.primaryBrown,
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 32.0, vertical: 16.0), // Increased padding
+                textStyle: const TextStyle(
+                  fontSize: 18.0, // Increased font size
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              child: const Text('Use this style'),
+            ),
+          ],
         ),
       ),
     );
