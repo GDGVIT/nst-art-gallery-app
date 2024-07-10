@@ -21,9 +21,7 @@ class Sidebar extends StatelessWidget {
             _createDrawerItem(
                 context, 2, 'About', selectedIndex, onItemSelected),
             _createDrawerItem(
-                context, 3, 'About GDSC', selectedIndex, onItemSelected),
-            _createDrawerItem(
-                context, 4, 'View Gallery', selectedIndex, onItemSelected),
+                context, 3, 'View Gallery', selectedIndex, onItemSelected),
           ],
         ),
       ),

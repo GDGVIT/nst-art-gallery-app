@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gdsc_artwork/Pages/select_image_page.dart';
 import 'package:gdsc_artwork/UIComponents/app_bar.dart';
 import '../UIComponents/sideBar.dart';
 import 'daily_theme.dart';
 import 'about.dart';
-import 'about_gdsc.dart';
 import 'gallery.dart';
 import '../home_content.dart';
 
@@ -19,7 +19,6 @@ class _HomeState extends State<Home> {
     HomeContent(),
     DailyTheme(),
     About(),
-    AboutGDSC(),
     Gallery(),
   ];
 

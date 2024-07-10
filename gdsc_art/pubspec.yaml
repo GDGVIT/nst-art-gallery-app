@@ -81,6 +81,28 @@ flutter:
     - family: Outfit
       fonts:
         - asset: fonts/Outfit.ttf
+    - family: OutfitBold
+      fonts:
+        - asset: fonts/OutfitBold.ttf
+    - family: OutfitExtraBold
+      fonts:
+        - asset: fonts/OutfitExtraBold.ttf
+    - family: OutfitSemiBold
+      fonts:
+        - asset: fonts/OutfitSemiBold.ttf
+    - family: OutfitMedium
+      fonts:
+        - asset: fonts/OutfitMedium.ttf
+    - family: OutfitBlack
+      fonts:
+        - asset: fonts/OutfitBlack.ttf
+    - family: OutfitExtraLight
+      fonts:
+        - asset: fonts/Outfit-ExtraLight.ttf
+    - family: OutfitLight
+      fonts:
+        - asset: fonts/Outfit-Light.ttf
+    
        
   #   - family: Trajan Pro
   #     fonts:

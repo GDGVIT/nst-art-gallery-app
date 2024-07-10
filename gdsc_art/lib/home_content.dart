@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gdsc_artwork/Constants/Colors.dart';
+import 'package:gdsc_artwork/Pages/select_image_page.dart';
 import 'package:gdsc_artwork/UIComponents/imageCrosel.dart';
+import 'package:gdsc_artwork/UIComponents/sidebar.dart'; // Import Sidebar
 
 class HomeContent extends StatelessWidget {
   final images = [
@@ -23,6 +25,12 @@ class HomeContent extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.black,
+      drawer: Sidebar(
+        selectedIndex: 0,
+        onItemSelected: (index) {
+          // Handle navigation here if needed
+        },
+      ),
       body: Padding(
         padding: const EdgeInsets.only(top: 40.0), // Increased top padding
         child: Column(
@@ -64,7 +72,12 @@ class HomeContent extends StatelessWidget {
             ),
             const SizedBox(height: 30.0), // Increased space below the text
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SelectImagePage()),
+                );
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: CustomColors.primaryBrown,
                 foregroundColor: Colors.white,
