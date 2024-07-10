@@ -96,7 +96,7 @@ class _CustomImageSliderState extends State<CustomImageSlider> {
         Positioned(
           left: 10,
           child: IconButton(
-            icon: Icon(Icons.arrow_left, color: Colors.white, size: 40),
+            icon: const Icon(Icons.arrow_left, color: Colors.white, size: 40),
             onPressed: moveLeft,
           ),
         ),
