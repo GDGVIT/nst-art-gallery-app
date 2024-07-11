@@ -7,18 +7,18 @@ class About extends StatelessWidget {
     return Scaffold(
       body: Container(
         color: CustomColors.primaryBlack,
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'ABOUT',
               style: TextStyle(
                   color: CustomColors.primaryBrown,
                   fontSize: 24,
                   fontFamily: "OutfitMedium"),
             ),
-            SizedBox(height: 40.0),
+            const SizedBox(height: 40.0),
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: RichText(
@@ -43,8 +43,8 @@ class About extends StatelessWidget {
               ),
             ),
             SizedBox(height: 30.0),
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0),
+            const Padding(
+              padding: EdgeInsets.only(left: 8.0),
               child: Text(
                 'This is an implementation of an arbitrary style transfer algorithm running purely in the browser using Tensor Flow.js. As with all neural style transfer algorithms, a neural network attempts to "draw" one picture, the Content (usually a photograph), in the style of another, the Style (usually a painting).',
                 style: TextStyle(
@@ -54,7 +54,7 @@ class About extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 40.0),
+            const SizedBox(height: 40.0),
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: Row(
@@ -65,7 +65,7 @@ class About extends StatelessWidget {
                     color: Colors.grey[300],
                   ),
                   SizedBox(width: 20.0),
-                  Text(
+                  const Text(
                     '+',
                     style: TextStyle(
                         color: CustomColors.primaryWhite, fontSize: 20),
@@ -77,12 +77,12 @@ class About extends StatelessWidget {
                     color: Colors.grey[300],
                   ),
                   SizedBox(width: 20.0),
-                  Text(
+                  const Text(
                     "=",
                     style: TextStyle(
                         color: CustomColors.primaryWhite, fontSize: 20),
                   ),
-                  SizedBox(width: 20.0),
+                  const SizedBox(width: 20.0),
                   Container(
                     width: 80,
                     height: 80,

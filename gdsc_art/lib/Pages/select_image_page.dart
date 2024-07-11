@@ -11,6 +11,7 @@ class SelectImagePage extends StatefulWidget {
 
 class _SelectImagePageState extends State<SelectImagePage> {
   File? _image;
+  bool _isStylizeClicked = false;
 
   Future<void> _pickImage() async {
     final picker = ImagePicker();
@@ -22,6 +23,10 @@ class _SelectImagePageState extends State<SelectImagePage> {
       });
     }
   }
+
+  double _primaryImageSize = 50.0;
+  double _artStyleSize = 50.0;
+  double _stylizationStrength = 50.0;
 
   @override
   Widget build(BuildContext context) {
@@ -42,17 +47,17 @@ class _SelectImagePageState extends State<SelectImagePage> {
       body: SingleChildScrollView(
         child: Container(
           color: CustomColors.primaryBlack,
-          padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Align(
-                alignment: Alignment.centerLeft,
+              const Padding(
+                padding: EdgeInsets.only(left: 25),
                 child: Text(
                   'Primary Image',
                   style: TextStyle(
                     color: CustomColors.primaryBrown,
-                    fontFamily: "OutfitRegular",
+                    fontFamily: "OutfitMedium",
                     fontSize: 24,
                   ),
                 ),
@@ -107,7 +112,7 @@ class _SelectImagePageState extends State<SelectImagePage> {
               const SizedBox(height: 15.0),
               Center(
                 child: SizedBox(
-                  width: 160, // Ensure enough width to accommodate the text
+                  width: 160,
                   height: 40,
                   child: OutlinedButton(
                     style: OutlinedButton.styleFrom(
@@ -131,14 +136,28 @@ class _SelectImagePageState extends State<SelectImagePage> {
                   ),
                 ),
               ),
+              const SizedBox(height: 20.0),
+              Center(
+                child: SliderWithTitle(
+                  title: 'PRIMARY IMAGE SIZE',
+                  value: _primaryImageSize,
+                  onChanged: (value) {
+                    setState(() {
+                      _primaryImageSize = value;
+                    });
+                  },
+                  width: screenWidth * 0.80,
+                  fontSize: 14,
+                ),
+              ),
               const SizedBox(height: 40.0),
-              const Align(
-                alignment: Alignment.centerLeft,
+              const Padding(
+                padding: EdgeInsets.only(left: 30),
                 child: Text(
                   'ART STYLE',
                   style: TextStyle(
                     color: CustomColors.primaryBrown,
-                    fontFamily: "OutfitRegular",
+                    fontFamily: "OutfitMedium",
                     fontSize: 24,
                   ),
                 ),
@@ -155,89 +174,32 @@ class _SelectImagePageState extends State<SelectImagePage> {
                   padding: const EdgeInsets.all(16.0),
                 ),
               ),
-              const SizedBox(height: 15.0),
+              const SizedBox(height: 20.0),
               Center(
-                child: SizedBox(
-                  width: 160, // Ensure enough width to accommodate the text
-                  height: 40,
-                  child: OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      backgroundColor: CustomColors.primaryBlack,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12.0), // Adjust padding
-                      side: const BorderSide(color: CustomColors.primaryBrown),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                    ),
-                    onPressed: () {},
-                    child: const Text(
-                      'Change Art Style',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                      ),
-                      textAlign: TextAlign.center, // Ensure text alignment
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 40.0),
-              const Text(
-                'ART STYLE SIZE',
-                style: TextStyle(
-                  color: CustomColors.primaryWhite,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                ),
-              ),
-              SliderTheme(
-                data: SliderTheme.of(context).copyWith(
-                  activeTrackColor: CustomColors.primaryWhite,
-                  inactiveTrackColor: CustomColors.primaryWhite,
-                  thumbColor: CustomColors.primaryWhite,
-                  overlayShape: null,
-                  trackHeight: 1.0, // Set the track height (width)
-                  thumbShape: CustomSliderThumbShape(
-                      customThumbRadius: 8.0), // Set the custom thumb shape
-                ),
-                child: Slider(
-                  value: 50,
-                  min: 0,
-                  max: 100,
-                  divisions: 100,
+                child: SliderWithTitle(
+                  title: 'ART STYLE SIZE',
+                  value: _artStyleSize,
                   onChanged: (value) {
-                    // Add your onChanged code here!
+                    setState(() {
+                      _artStyleSize = value;
+                    });
                   },
+                  width: screenWidth * 0.80,
+                  fontSize: 14,
                 ),
               ),
               const SizedBox(height: 20.0),
-              const Text(
-                'STYLIZATION STRENGTH',
-                style: TextStyle(
-                  color: CustomColors.primaryWhite,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                ),
-              ),
-              SliderTheme(
-                data: SliderTheme.of(context).copyWith(
-                  activeTrackColor: CustomColors.primaryWhite,
-                  inactiveTrackColor: CustomColors.primaryWhite,
-                  thumbColor: CustomColors.primaryWhite,
-                  overlayShape: null,
-                  trackHeight: 1.0, // Set the track height (width)
-                  thumbShape: CustomSliderThumbShape(
-                      customThumbRadius: 8.0), // Set the custom thumb shape
-                ),
-                child: Slider(
-                  value: 50,
-                  min: 0,
-                  max: 100,
-                  divisions: 100,
+              Center(
+                child: SliderWithTitle(
+                  title: 'STYLIZATION STRENGTH',
+                  value: _stylizationStrength,
                   onChanged: (value) {
-                    // Add your onChanged code here!
+                    setState(() {
+                      _stylizationStrength = value;
+                    });
                   },
+                  width: screenWidth * 0.80,
+                  fontSize: 14,
                 ),
               ),
               const SizedBox(height: 40.0),
@@ -249,15 +211,12 @@ class _SelectImagePageState extends State<SelectImagePage> {
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 32.0, vertical: 16.0), // Adjust padding
+                        horizontal: 38.0, vertical: 8.0), // Adjust padding
                   ),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => StylizedImagePage(),
-                      ),
-                    );
+                    setState(() {
+                      _isStylizeClicked = true;
+                    });
                   },
                   child: const Text(
                     'STYLIZE',
@@ -269,9 +228,79 @@ class _SelectImagePageState extends State<SelectImagePage> {
                   ),
                 ),
               ),
+              if (_isStylizeClicked) StylizedImagePageContent()
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class SliderWithTitle extends StatelessWidget {
+  final String title;
+  final double value;
+  final ValueChanged<double> onChanged;
+  final double width;
+  final double fontSize;
+
+  SliderWithTitle({
+    required this.title,
+    required this.value,
+    required this.onChanged,
+    required this.width,
+    required this.fontSize,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          title,
+          style: TextStyle(
+            color: CustomColors.primaryWhite,
+            fontWeight: FontWeight.bold,
+            fontSize: fontSize,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        SizedBox(
+          width: width,
+          child: CustomSlider(
+            value: value,
+            onChanged: onChanged,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class CustomSlider extends StatelessWidget {
+  final double value;
+  final ValueChanged<double> onChanged;
+
+  CustomSlider({required this.value, required this.onChanged});
+
+  @override
+  Widget build(BuildContext context) {
+    return SliderTheme(
+      data: SliderTheme.of(context).copyWith(
+        activeTrackColor: CustomColors.primaryWhite,
+        inactiveTrackColor: CustomColors.primaryWhite,
+        thumbColor: CustomColors.primaryWhite,
+        overlayShape: null,
+        trackHeight: 1.0,
+        thumbShape: CustomSliderThumbShape(customThumbRadius: 8.0),
+      ),
+      child: Slider(
+        value: value,
+        min: 0,
+        max: 100,
+        divisions: 100,
+        onChanged: onChanged,
       ),
     );
   }

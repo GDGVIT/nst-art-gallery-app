@@ -85,7 +85,7 @@ class HomeContent extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 32.0, vertical: 16.0), // Increased padding
+                    horizontal: 32.0, vertical: 12.0),
                 textStyle: const TextStyle(
                   fontSize: 18.0, // Increased font size
                   fontWeight: FontWeight.bold,

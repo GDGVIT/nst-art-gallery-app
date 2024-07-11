@@ -9,20 +9,35 @@ class Sidebar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      child: Container(
-        color: CustomColors.primaryBlack,
-        child: ListView(
-          children: [
-            _createDrawerItem(
-                context, 0, 'Home', selectedIndex, onItemSelected),
-            _createDrawerItem(
-                context, 1, 'Theme of the Day', selectedIndex, onItemSelected),
-            _createDrawerItem(
-                context, 2, 'About', selectedIndex, onItemSelected),
-            _createDrawerItem(
-                context, 3, 'View Gallery', selectedIndex, onItemSelected),
-          ],
+    return SizedBox(
+      child: Drawer(
+        width: MediaQuery.of(context).size.width * 0.5,
+        child: Container(
+          color: CustomColors.primaryBlack,
+          child: ListView(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: _createDrawerItem(
+                    context, 0, 'HOME', selectedIndex, onItemSelected),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: _createDrawerItem(context, 1, 'THEME OF\n THE DAY',
+                    selectedIndex, onItemSelected),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: _createDrawerItem(
+                    context, 2, 'ABOUT', selectedIndex, onItemSelected),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: _createDrawerItem(
+                    context, 3, 'VIEW GALLERY', selectedIndex, onItemSelected),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -33,13 +48,17 @@ class Sidebar extends StatelessWidget {
     return Column(
       children: [
         ListTile(
-          title: Text(
-            title,
-            style: TextStyle(
-              color: CustomColors.primaryWhite,
-              decoration: index == selectedIndex
-                  ? TextDecoration.underline
-                  : TextDecoration.none,
+          title: Center(
+            child: Text(
+              title,
+              style: TextStyle(
+                fontSize: 20,
+                fontFamily: "OutfitMedium",
+                color: CustomColors.primaryWhite,
+                decoration: index == selectedIndex
+                    ? TextDecoration.underline
+                    : TextDecoration.none,
+              ),
             ),
           ),
           onTap: () {
@@ -48,6 +67,7 @@ class Sidebar extends StatelessWidget {
           },
         ),
         Container(
+          width: MediaQuery.of(context).size.width * 0.3,
           height: 2,
           color: CustomColors.primaryBrown,
         ),
