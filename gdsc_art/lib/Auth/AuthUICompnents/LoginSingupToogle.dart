@@ -26,16 +26,18 @@ class ToggleSection extends StatelessWidget {
                 if (!isLogin) toggleView();
               },
               child: Container(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                   color: isLogin
                       ? CustomColors.secondaryBrown
                       : CustomColors.primaryBlack,
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(12.0),
-                    bottomLeft: Radius.circular(12.0),
+                  borderRadius: BorderRadius.only(
+                    topLeft: const Radius.circular(12),
+                    bottomLeft: const Radius.circular(12),
+                    topRight: isLogin ? const Radius.circular(12) : Radius.zero,
+                    bottomRight:
+                        isLogin ? const Radius.circular(12) : Radius.zero,
                   ),
-                  border: Border.all(color: CustomColors.primaryBrown),
                 ),
                 child: Text(
                   'Login',
@@ -54,16 +56,18 @@ class ToggleSection extends StatelessWidget {
                 if (isLogin) toggleView();
               },
               child: Container(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                   color: isLogin
                       ? CustomColors.primaryBlack
                       : CustomColors.secondaryBrown,
-                  borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(12.0),
-                    bottomRight: Radius.circular(12.0),
+                  borderRadius: BorderRadius.only(
+                    topLeft: isLogin ? Radius.zero : const Radius.circular(12),
+                    bottomLeft:
+                        isLogin ? Radius.zero : const Radius.circular(12),
+                    topRight: const Radius.circular(12),
+                    bottomRight: const Radius.circular(12),
                   ),
-                  border: Border.all(color: CustomColors.primaryBrown),
                 ),
                 child: Text(
                   'Signup',

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:gdsc_artwork/Auth/AuthViewPage.dart';
 
-import 'Pages/home.dart';
+import 'package:gdsc_artwork/Auth/AuthViewPage.dart';
+import 'package:gdsc_artwork/home.dart';
+import 'package:gdsc_artwork/ViewModel/login_and_signup_provider.dart';
+import 'package:gdsc_artwork/ViewModel/user_notifier.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,13 +13,23 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Navigation Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => UserNotifier()),
+        ChangeNotifierProvider(create: (_) => LoginAndSignupProvider()),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        initialRoute: '/auth',
+        routes: {
+          '/auth': (context) => AuthPage(),
+          '/home': (context) => Home(),
+        },
       ),
-      home: AuthPage(),
     );
   }
 }

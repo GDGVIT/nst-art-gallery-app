@@ -31,7 +31,7 @@ class DailyTheme extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 20.0), // Spacing below the title
+            const SizedBox(height: 20.0),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
@@ -54,7 +54,7 @@ class DailyTheme extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 20.0), // Spacing below the images
+                    const SizedBox(height: 20.0),
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8.0),
                       child: Text(
@@ -67,7 +67,7 @@ class DailyTheme extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    const SizedBox(height: 20.0), // Spacing below the text
+                    const SizedBox(height: 20.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [

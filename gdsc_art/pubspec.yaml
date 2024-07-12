@@ -38,6 +38,8 @@ dependencies:
   image_picker: ^1.1.2
   carousel_slider: ^4.2.1
   overlapped_carousel: ^1.0.2
+  fluttertoast: ^8.2.6
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:

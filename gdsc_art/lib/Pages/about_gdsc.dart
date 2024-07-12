@@ -10,7 +10,7 @@ class AboutGDSC extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: Container(
           color: CustomColors.primaryBlack,
-          child: Center(
+          child: const Center(
             child: Text(
               'About GDSC Page',
               style: TextStyle(color: CustomColors.primaryWhite, fontSize: 24),

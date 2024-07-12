@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:gdsc_artwork/Pages/select_image_page.dart';
+import 'package:gdsc_artwork/Pages/about.dart';
+import 'package:gdsc_artwork/Pages/account.dart';
+import 'package:gdsc_artwork/Pages/daily_theme.dart';
+import 'package:gdsc_artwork/Pages/gallery.dart';
 import 'package:gdsc_artwork/UIComponents/app_bar.dart';
-import '../UIComponents/sideBar.dart';
-import 'daily_theme.dart';
-import 'about.dart';
-import 'gallery.dart';
-import '../home_content.dart';
+import 'package:gdsc_artwork/UIComponents/sideBar.dart';
+import 'package:gdsc_artwork/Pages/home_content.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -20,6 +20,7 @@ class _HomeState extends State<Home> {
     DailyTheme(),
     About(),
     Gallery(),
+    Account()
   ];
 
   void _onItemTapped(int index) {

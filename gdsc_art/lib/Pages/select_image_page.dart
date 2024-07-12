@@ -65,8 +65,8 @@ class _SelectImagePageState extends State<SelectImagePage> {
               const SizedBox(height: 20.0),
               Center(
                 child: Container(
-                  height: screenHeight * 0.3, // 30% of screen height
-                  width: screenWidth * 0.75, // 75% of screen width
+                  height: screenHeight * 0.3,
+                  width: screenWidth * 0.75,
                   decoration: BoxDecoration(
                     border: Border.all(color: CustomColors.primaryBrown),
                   ),
@@ -117,8 +117,7 @@ class _SelectImagePageState extends State<SelectImagePage> {
                   child: OutlinedButton(
                     style: OutlinedButton.styleFrom(
                       backgroundColor: CustomColors.primaryBlack,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12.0), // Adjust padding
+                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
                       side: const BorderSide(color: CustomColors.primaryBrown),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
@@ -131,7 +130,7 @@ class _SelectImagePageState extends State<SelectImagePage> {
                         color: Colors.white,
                         fontSize: 14,
                       ),
-                      textAlign: TextAlign.center, // Ensure text alignment
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),
@@ -165,8 +164,8 @@ class _SelectImagePageState extends State<SelectImagePage> {
               const SizedBox(height: 20.0),
               Center(
                 child: Container(
-                  height: screenHeight * 0.3, // 30% of screen height
-                  width: screenWidth * 0.75, // 75% of screen width
+                  height: screenHeight * 0.3,
+                  width: screenWidth * 0.75,
                   decoration: BoxDecoration(
                     color: Colors.grey[300],
                     border: Border.all(color: CustomColors.primaryBrown),
@@ -211,7 +210,7 @@ class _SelectImagePageState extends State<SelectImagePage> {
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 38.0, vertical: 8.0), // Adjust padding
+                        horizontal: 38.0, vertical: 8.0),
                   ),
                   onPressed: () {
                     setState(() {

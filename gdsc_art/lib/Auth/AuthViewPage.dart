@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gdsc_artwork/Auth/LoginPage.dart';
 import 'package:gdsc_artwork/Auth/SignupPage.dart';
-import '../Constants/Colors.dart';
 
 class AuthPage extends StatefulWidget {
   @override
@@ -9,24 +8,21 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
-  bool isLogin = true;
+  bool showLogin = true;
 
   void toggleView() {
     setState(() {
-      isLogin = !isLogin;
+      showLogin = !showLogin;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CustomColors.primaryBlack,
-      body: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 300),
-        child: isLogin
-            ? LoginPage(toggleView: toggleView)
-            : SignupPage(toggleView: toggleView),
-      ),
+      backgroundColor: Colors.black,
+      body: showLogin
+          ? LoginPage(toggleView: toggleView)
+          : SignupPage(toggleView: toggleView),
     );
   }
 }

@@ -35,10 +35,10 @@ class Gallery extends StatelessWidget {
                   crossAxisSpacing: 15.0,
                   mainAxisSpacing: 15.0,
                 ),
-                itemCount: 8, // 3 columns with 2 boxes each
+                itemCount: 8,
                 itemBuilder: (context, index) {
                   return Container(
-                    color: Colors.grey[300], // Light gray color
+                    color: Colors.grey[300],
                   );
                 },
               ),
