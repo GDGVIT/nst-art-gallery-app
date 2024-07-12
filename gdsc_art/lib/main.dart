@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gdsc_artwork/Auth/AuthViewPage.dart';
 
 import 'Pages/home.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Home(),
+      home: AuthPage(),
     );
   }
 }

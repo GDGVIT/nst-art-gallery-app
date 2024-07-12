@@ -6,4 +6,5 @@ class CustomColors {
   static const Color primaryCream = Color(0xFFEAD0B3);
 
   static const Color primaryWhite = Color(0xFFFFFFFF);
+  static const Color secondaryBrown = Color(0xFFEAD0B3);
 }
