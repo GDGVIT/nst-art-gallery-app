@@ -93,24 +93,38 @@ class _SignupPageState extends State<SignupPage> {
     return Column(
       children: [
         const SizedBox(height: 15.0),
-        GestureDetector(
-          onTap: _pickImage,
-          child: ClipOval(
-            child: Container(
-              width: 80,
-              height: 80,
-              child: _profileImage != null
-                  ? Image.file(
-                      _profileImage!,
-                      fit: BoxFit.cover,
-                    )
-                  : Image.asset(
-                      'images/profilepc.png',
-                      fit: BoxFit.contain,
-                    ),
-            ),
-          ),
-        ),
+        _profileImage == null
+            ? GestureDetector(
+                onTap: _pickImage,
+                child: Container(
+                  width: 80,
+                  height: 80,
+                  child: _profileImage != null
+                      ? Image.file(
+                          _profileImage!,
+                          fit: BoxFit.cover,
+                        )
+                      : Image.asset(
+                          'images/profilepc.png',
+                          fit: BoxFit.contain,
+                        ),
+                ),
+              )
+            : ClipOval(
+                child: Container(
+                  width: 80,
+                  height: 80,
+                  child: _profileImage != null
+                      ? Image.file(
+                          _profileImage!,
+                          fit: BoxFit.cover,
+                        )
+                      : Image.asset(
+                          'images/profilepc.png',
+                          fit: BoxFit.contain,
+                        ),
+                ),
+              ),
         const SizedBox(height: 15.0),
         const Text(
           'Create your profile',
@@ -121,21 +135,23 @@ class _SignupPageState extends State<SignupPage> {
           ),
         ),
         const SizedBox(height: 23.0),
-        const Align(
-          alignment: Alignment.centerLeft,
-          child: Text(
-            'What is your username?',
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: "OutfitRegular",
-              fontSize: 16,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'What is your username?',
+              style: TextStyle(
+                color: Colors.white,
+                fontFamily: "OutfitRegular",
+                fontSize: 16,
+              ),
             ),
-          ),
-        ),
-        const SizedBox(height: 8.0),
-        TextFieldComponent(
-          labelText: 'Username',
-          controller: usernameController,
+            const SizedBox(height: 8.0),
+            TextFieldComponent(
+              labelText: 'Username',
+              controller: usernameController,
+            ),
+          ],
         ),
         const SizedBox(height: 25.0),
         AuthButton(
