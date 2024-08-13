@@ -40,6 +40,8 @@ dependencies:
   overlapped_carousel: ^1.0.2
   fluttertoast: ^8.2.6
   provider: ^6.1.2
+  http: ^1.2.2
+  carousel_indicator: ^1.0.6
 
 dev_dependencies:
   flutter_test:

@@ -7,7 +7,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: CustomColors.primaryBlack,
       elevation: 0,
-      leadingWidth: 100,
+      leadingWidth: 250,
       leading: Row(
         children: [
           Builder(
@@ -20,7 +20,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               );
             },
           ),
-          Image.asset('images/sampleLogo.png', height: 100, fit: BoxFit.fill),
+          SizedBox(width: 20),
+          const Text(
+            'ART Gallery',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 24.0,
+              fontFamily: 'OutfitMedium',
+            ),
+          ),
         ],
       ),
     );

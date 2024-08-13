@@ -26,19 +26,21 @@ class CustomImageSlider extends StatefulWidget {
 }
 
 class _CustomImageSliderState extends State<CustomImageSlider> {
-  late double currentIndex;
+  late int currentIndex;
 
   @override
   void initState() {
     super.initState();
-    currentIndex = widget.currentIndex.toDouble();
+    currentIndex = widget.currentIndex;
   }
 
-  void updateIndex(double index) {
+  void updateIndex(int index) {
     setState(() {
       currentIndex = index;
     });
     widget.onClicked(index.toInt());
+    print("$index");
+    print("$currentIndex");
   }
 
   void moveLeft() {
@@ -58,56 +60,78 @@ class _CustomImageSliderState extends State<CustomImageSlider> {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
 
-    return Stack(
-      alignment: Alignment.center,
-      children: [
+    return
+        // Stack(
+        //   alignment: Alignment.center,
+        //   children: [
+        //     SizedBox(
+        //       height: screenWidth / 3.3 * (16 / 9),
+        //       width: screenHeight * 100,
+        //       child:
+        // GestureDetector(
+        // onPanUpdate: (details) {
+        //   setState(() {
+        //     var indx = currentIndex - details.delta.dx * 0.02;
+        //     if (indx >= 0 && indx <= widget.widgets.length - 1) {
+        //       currentIndex = indx;
+        //     }
+        //   });
+        // },
+        // onPanEnd: (details) {
+        //   setState(() {
+        //     currentIndex = currentIndex.roundToDouble();
+        //   });
+        //   widget.onClicked(currentIndex.toInt());
+        // },
+        // child:
         SizedBox(
-          height: screenWidth / 3.3 * (16 / 9),
-          width: screenHeight * 100,
-          child: GestureDetector(
-            onPanUpdate: (details) {
-              setState(() {
-                var indx = currentIndex - details.delta.dx * 0.02;
-                if (indx >= 0 && indx <= widget.widgets.length - 1) {
-                  currentIndex = indx;
-                }
-              });
-            },
-            onPanEnd: (details) {
-              setState(() {
-                currentIndex = currentIndex.roundToDouble();
-              });
-              widget.onClicked(currentIndex.toInt());
-            },
-            child: OverlappedCarousel(
-              widgets: widget.widgets,
-              currentIndex: currentIndex.toInt(),
-              onClicked: (index) {
-                setState(() {
-                  currentIndex = index.toDouble();
-                });
-                widget.onClicked(index);
-              },
-              obscure: widget.obscure,
-              skewAngle: widget.skewAngle,
+      height: 200,
+      width: 500,
+      child: OverlappedCarousel(
+        widgets: widget.widgets, //List of widgets
+        currentIndex: 2,
+        onClicked: (index) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("You clicked at $index"),
             ),
-          ),
-        ),
-        Positioned(
-          left: 10,
-          child: IconButton(
-            icon: const Icon(Icons.arrow_left, color: Colors.white, size: 40),
-            onPressed: moveLeft,
-          ),
-        ),
-        Positioned(
-          right: 10,
-          child: IconButton(
-            icon: Icon(Icons.arrow_right, color: Colors.white, size: 40),
-            onPressed: moveRight,
-          ),
-        ),
-      ],
+          );
+        },
+        obscure: 0.4,
+        skewAngle: 0.1,
+      ),
     );
+    // ),
+
+    //       OverlappedCarousel(
+    //     widgets: widget.widgets,
+    //     currentIndex: currentIndex,
+    //     onClicked: (index) {
+    //       setState(() {
+    //         currentIndex = index;
+    //       });
+    //       widget.onClicked(index);
+    //     },
+    //     obscure: widget.obscure,
+    //     skewAngle: widget.skewAngle,
+    //   ),
+    // ),
+    // ),
+    // Positioned(
+    //   left: 10,
+    //   child: IconButton(
+    //     icon: const Icon(Icons.arrow_left, color: Colors.white, size: 40),
+    //     onPressed: moveLeft,
+    //   ),
+    // ),
+    // Positioned(
+    //   right: 10,
+    //   child: IconButton(
+    //     icon: Icon(Icons.arrow_right, color: Colors.white, size: 40),
+    //     onPressed: moveRight,
+    //   ),
+    // ),
+    //   ],
+    // );
   }
 }

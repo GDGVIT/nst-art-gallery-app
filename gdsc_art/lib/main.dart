@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:gdsc_artwork/Auth/AuthViewPage.dart';
-import 'package:gdsc_artwork/home.dart';
+import 'package:gdsc_artwork/Home.dart';
+import 'package:gdsc_artwork/Pages/account.dart';
 import 'package:gdsc_artwork/ViewModel/login_and_signup_provider.dart';
 import 'package:gdsc_artwork/ViewModel/user_notifier.dart';
 import 'package:provider/provider.dart';
@@ -24,10 +24,11 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: '/auth',
+        initialRoute: '/home',
         routes: {
           '/auth': (context) => AuthPage(),
           '/home': (context) => Home(),
+          '/account': (context) => Account(),
         },
       ),
     );

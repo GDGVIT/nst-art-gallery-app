@@ -30,8 +30,8 @@ class StylizedImagePageContent extends StatelessWidget {
           const SizedBox(height: 20.0),
           Center(
             child: Container(
-              height: screenHeight * 0.3, // 30% of screen height
-              width: screenWidth * 0.75, // 75% of screen width
+              height: screenHeight * 0.3,
+              width: screenWidth * 0.75,
               color: Colors.grey,
             ),
           ),
@@ -43,8 +43,8 @@ class StylizedImagePageContent extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 32.0, vertical: 8.0), // Adjust padding
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 32.0, vertical: 8.0),
               ),
               onPressed: () {},
               child: const Text(
