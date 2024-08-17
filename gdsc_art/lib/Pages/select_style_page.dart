@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:gdsc_artwork/Pages/stylized_image.dart';
+import 'package:gdsc_artwork/Pages/select_image_page.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import '../Constants/Colors.dart';
 import 'package:super_tooltip/super_tooltip.dart';
 
-class SelectImagePage extends StatefulWidget {
+class SelectStylePage extends StatefulWidget {
   @override
   _SelectImagePageState createState() => _SelectImagePageState();
 }
 
-class _SelectImagePageState extends State<SelectImagePage> {
+class _SelectImagePageState extends State<SelectStylePage> {
   File? _image;
 
   Future<void> _pickImage() async {
@@ -53,9 +53,9 @@ class _SelectImagePageState extends State<SelectImagePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 const Text(
-                  "Primary Image",
+                  "ART STYLE",
                   style: TextStyle(
                     color: CustomColors.primaryCream,
                     fontFamily: "OutfitRegular",
@@ -64,16 +64,16 @@ class _SelectImagePageState extends State<SelectImagePage> {
                 ),
                 const SizedBox(height: 5),
                 const Text(
-                  "Select an image to stylize",
+                  "Select an art style to stylize with",
                   style: TextStyle(
                     color: CustomColors.primaryBrown,
                     fontFamily: "OutfitRegular",
                     fontSize: 12,
                   ),
                 ),
-                const SizedBox(height: 15),
+                const SizedBox(height: 20),
                 Container(
-                  height: 340,
+                  height: 350,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: Color(0xFF333333),
@@ -85,12 +85,12 @@ class _SelectImagePageState extends State<SelectImagePage> {
                             onPressed: _pickImage,
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.transparent,
-                              side: BorderSide(color: Colors.white),
+                              side: const BorderSide(color: Colors.white),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                             ),
-                            child: Text(
+                            child: const Text(
                               "Upload Image",
                               style: TextStyle(
                                 color: Colors.white,
@@ -110,37 +110,22 @@ class _SelectImagePageState extends State<SelectImagePage> {
                           ),
                         ),
                 ),
-                const SizedBox(height: 15),
-                Container(
-                  padding: const EdgeInsets.all(16.0),
-                  decoration: BoxDecoration(
-                    color: Color(0xFF333333),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  child: SliderWithTitle(
-                    title: "Primary Image Size",
-                    initialValue: 50.0,
-                    width: double.infinity,
-                    fontSize: 14,
-                    tooltipMessage: "hello there this is rujin",
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Container(
-                  padding: const EdgeInsets.all(16.0),
-                  decoration: BoxDecoration(
-                    color: Color(0xFF333333),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  child: SliderWithTitle(
-                    title: "Stylization Strength",
-                    initialValue: 50.0,
-                    width: double.infinity,
-                    fontSize: 14,
-                    tooltipMessage: "hello there this is rujin",
-                  ),
-                ),
                 const SizedBox(height: 20),
+                Container(
+                  padding: const EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                    color: Color(0xFF333333),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: SliderWithTitle(
+                    title: "ART STYLE SIZE",
+                    initialValue: 50.0,
+                    width: double.infinity,
+                    fontSize: 14,
+                    tooltipMessage: "hello there this is rujin",
+                  ),
+                ),
+                const SizedBox(height: 50),
                 Opacity(
                   opacity: _image == null ? 0.5 : 1.0,
                   child: Row(
@@ -158,8 +143,8 @@ class _SelectImagePageState extends State<SelectImagePage> {
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                           ),
-                          child: Text(
-                            "Change image",
+                          child: const Text(
+                            "Change Art",
                             style: TextStyle(
                               color: CustomColors.primaryCream,
                               fontFamily: "OutfitRegular",
@@ -175,7 +160,7 @@ class _SelectImagePageState extends State<SelectImagePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => StylizedImage()),
+                                  builder: (context) => SelectImagePage()),
                             );
                           },
                           style: ElevatedButton.styleFrom(
@@ -190,7 +175,7 @@ class _SelectImagePageState extends State<SelectImagePage> {
                               fontFamily: "OutfitMedium",
                             ),
                           ),
-                          child: const Text('Stylize'),
+                          child: const Text('Proceed'),
                         ),
                       )
                     ],
@@ -274,6 +259,7 @@ class _SliderWithTitleState extends State<SliderWithTitle> {
             ),
           ],
         ),
+        const SizedBox(height: 8),
         SizedBox(
           width: widget.width,
           child: CustomSlider(

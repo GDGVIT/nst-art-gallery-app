@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gdsc_artwork/Constants/Colors.dart';
-import 'package:gdsc_artwork/Pages/select_image_page.dart';
+import 'package:gdsc_artwork/Pages/select_style_page.dart';
 import 'package:gdsc_artwork/UIComponents/sidebar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:gdsc_artwork/UIComponents/art_style_info_box.dart';
@@ -74,14 +74,12 @@ class _HomeContentState extends State<HomeContent> {
                         )),
                   ],
                 ),
-
-                const SizedBox(height: 35.0),
+                const SizedBox(height: 20.0),
                 Container(
-                  height: 258,
+                  height: 248,
                   child: buildImageSlider(images),
                 ),
                 SizedBox(height: 15.0),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: images.asMap().entries.map((entry) {
@@ -100,7 +98,6 @@ class _HomeContentState extends State<HomeContent> {
                     );
                   }).toList(),
                 ),
-                // Art Style Info Box
                 ArtStyleInfoBox(
                   title: 'POST - IMPRESSIONISM',
                   description:
@@ -109,11 +106,10 @@ class _HomeContentState extends State<HomeContent> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => SelectImagePage()),
+                          builder: (context) => SelectStylePage()),
                     );
                   },
                 ),
-                // Line and Button Section
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -144,11 +140,9 @@ class _HomeContentState extends State<HomeContent> {
                     ),
                   ],
                 ),
-
+                SizedBox(height: 5),
                 ElevatedButton(
-                  onPressed: () {
-                    // Your onPressed logic here
-                  },
+                  onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     backgroundColor: CustomColors.primaryCream,
                     foregroundColor: Colors.black,
@@ -174,7 +168,7 @@ class _HomeContentState extends State<HomeContent> {
     return CarouselSlider.builder(
       options: CarouselOptions(
           autoPlay: false,
-          viewportFraction: 0.70,
+          viewportFraction: 0.65,
           enableInfiniteScroll: true,
           disableCenter: true,
           onPageChanged: (index, reason) {
@@ -186,7 +180,7 @@ class _HomeContentState extends State<HomeContent> {
       itemCount: images.length,
       itemBuilder: (context, index, realIndex) {
         return Container(
-          height: 380,
+          height: 350,
           margin: const EdgeInsets.symmetric(horizontal: 5.0),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -203,7 +197,7 @@ class _HomeContentState extends State<HomeContent> {
                 child: Image.asset(
                   images[index],
                   fit: BoxFit.cover,
-                  height: 190.0,
+                  height: 180.0,
                   width: double.infinity,
                 ),
               ),

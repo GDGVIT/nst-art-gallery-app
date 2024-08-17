@@ -15,7 +15,7 @@ class ArtStyleInfoBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+      margin: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 2),
       padding: const EdgeInsets.all(14.0),
       decoration: BoxDecoration(
         color: CustomColors.secondaryBlack,

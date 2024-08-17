@@ -11,13 +11,6 @@ class About extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'ABOUT',
-              style: TextStyle(
-                  color: CustomColors.primaryBrown,
-                  fontSize: 24,
-                  fontFamily: "OutfitMedium"),
-            ),
             const SizedBox(height: 40.0),
             Padding(
               padding: const EdgeInsets.only(left: 8.0),

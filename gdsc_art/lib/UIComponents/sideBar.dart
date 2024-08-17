@@ -36,12 +36,18 @@ class Sidebar extends StatelessWidget {
                 Expanded(
                   child: ListView(
                     children: [
-                      _createDrawerItem(context, 0, 'Home', 'images/home.png',
-                          selectedIndex, onItemSelected, user),
+                      _createDrawerItem(
+                          context,
+                          0,
+                          'Create',
+                          'images/createIcon.png',
+                          selectedIndex,
+                          onItemSelected,
+                          user),
                       _createDrawerItem(
                           context,
                           1,
-                          'Theme Of The Day',
+                          'Themes',
                           'images/themeoftheday.png',
                           selectedIndex,
                           onItemSelected,
@@ -65,7 +71,7 @@ class Sidebar extends StatelessWidget {
                       _createDrawerItem(
                           context,
                           4,
-                          'Account',
+                          'MyAccount',
                           'images/account.png',
                           selectedIndex,
                           onItemSelected,
@@ -161,11 +167,11 @@ class Sidebar extends StatelessWidget {
       Function(int) onItemSelected,
       User? user) {
     return ListTile(
-      leading: Image.asset(iconPath, width: 20, height: 20),
+      leading: Image.asset(iconPath, width: 25, height: 25),
       title: Text(
         title,
         style: TextStyle(
-          fontSize: 16,
+          fontSize: 18,
           fontFamily: "OutfitMedium",
           color: CustomColors.primaryWhite,
           decoration: index == selectedIndex

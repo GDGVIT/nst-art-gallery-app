@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../Constants/Colors.dart';
 
 class Gallery extends StatelessWidget {
@@ -14,36 +15,164 @@ class Gallery extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              const Align(
-                alignment: Alignment.center,
-                child: Text(
-                  'ART GALLERY',
-                  style: TextStyle(
-                    color: CustomColors.primaryWhite,
-                    fontFamily: "OutfitMedium",
-                    fontSize: 50,
-                    letterSpacing: -5,
+              const SizedBox(height: 20.0),
+              _buildGrid(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildGrid() {
+    final List<String> imagePaths = [
+      'images/galleryImage1.png',
+      'images/galleryImage2.png',
+      'images/galleryImage3.png',
+      'images/galleryImage4.png',
+      'images/galleryImage1.png'
+    ];
+
+    final List<String> titles = [
+      'Sunset Bliss',
+      'Mountain Peak',
+      'Ocean Waves',
+      'Forest Trail',
+      'Sunset Bliss'
+    ];
+
+    final List<String> names = [
+      'John Doe',
+      'Jane Smith',
+      'Emily Brown',
+      'Michael Clark',
+      'Sophia Davis'
+    ];
+
+    return MasonryGridView.count(
+      crossAxisCount: 2,
+      mainAxisSpacing: 10,
+      crossAxisSpacing: 10,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: imagePaths.length,
+      itemBuilder: (context, index) {
+        return GalleryContainer(
+          imagePath: imagePaths[index % imagePaths.length],
+          title: titles[index % titles.length],
+          name: names[index % names.length], // Pass the name to the container
+          extent: (index % 3 + 1) * 110,
+        );
+      },
+    );
+  }
+}
+
+class GalleryContainer extends StatefulWidget {
+  final String imagePath;
+  final String title;
+  final String name; // Add the name property
+  final double extent;
+
+  const GalleryContainer({
+    Key? key,
+    required this.imagePath,
+    required this.title,
+    required this.name, // Initialize the name property
+    required this.extent,
+  }) : super(key: key);
+
+  @override
+  _GalleryContainerState createState() => _GalleryContainerState();
+}
+
+class _GalleryContainerState extends State<GalleryContainer> {
+  bool isLiked = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: widget.extent,
+      decoration: BoxDecoration(
+        color: CustomColors.tertiaryBlack,
+        borderRadius: BorderRadius.circular(15.0),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(15.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(widget.imagePath),
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
-              const SizedBox(height: 20.0),
-              GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 15.0,
-                  mainAxisSpacing: 15.0,
-                ),
-                itemCount: 8,
-                itemBuilder: (context, index) {
-                  return Container(
-                    color: Colors.grey[300],
-                  );
-                },
+            ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              color: CustomColors.tertiaryBlack,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.title,
+                    style: const TextStyle(
+                      color: CustomColors.primaryCream,
+                      fontFamily: "OutfitBold",
+                      fontSize: 11,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
+                  const SizedBox(height: 4.0),
+                  Row(
+                    children: [
+                      CircleAvatar(
+                        radius: 10.0, // Reduced radius
+                        backgroundColor: CustomColors.primaryWhite,
+                        child: Text(
+                          widget.name.substring(0, 1),
+                          style: const TextStyle(
+                            color: CustomColors.primaryBlack,
+                            fontFamily: "OutfitBold",
+                            fontSize: 12, // Adjusted text size
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 8.0),
+                      Text(
+                        widget.name,
+                        style: const TextStyle(
+                          color: CustomColors.primaryWhite,
+                          fontFamily: "OutfitMedium",
+                          fontSize: 12,
+                        ),
+                      ),
+                      const Spacer(),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            isLiked = !isLiked;
+                          });
+                        },
+                        child: Icon(
+                          isLiked ? Icons.favorite : Icons.favorite_border,
+                          color:
+                              isLiked ? Colors.red : CustomColors.primaryWhite,
+                          size: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

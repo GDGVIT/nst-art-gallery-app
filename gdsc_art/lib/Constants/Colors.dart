@@ -9,5 +9,7 @@ class CustomColors {
   static const Color secondaryBrown = Color(0xFFEAD0B3);
   static const Color secondaryCream = Color(0xFFEAD0B3);
 
+  static const Color tertiaryBlack = Color(0xFF373333);
+
   static const Color secondaryBlack = Color(0xFF222122);
 }
